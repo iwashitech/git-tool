@@ -1,0 +1,34 @@
+[core]
+	quotepath = off
+	autoCRLF = true
+	filemode = false
+	editor = vi
+[diff]
+	tool = WinMerge
+[difftool "WinMerge"]
+	path = /mnt/c/Program Files/WinMerge/WinMergeU.exe
+	cmd = \"/mnt/c/Program Files/WinMerge/WinMergeU.exe\" -e -r -u -wl -dl Local -wr -dr Remote \"`wslpath -wa $LOCAL`\" \"`wslpath -wa $REMOTE`\"
+	trustExitCode = false
+[merge]
+	tool = WinMerge
+[mergetool "WinMerge"]
+	path = /mnt/c/Program Files/WinMerge/WinMergeU.exe
+	cmd = \"/mnt/c/Program Files/WinMerge/WinMergeU.exe\" -r -e -u -al -dl Local -wm -dm Remote -wr -dr 共通祖先 \"`wslpath -wa $LOCAL`\" \"`wslpath -wa $REMOTE`\" \"`wslpath -wa $BASE`\" -o \"`wslpath -wa $MERGED`\"
+	trustExitCode = false
+[gui]
+	encoding = utf-8
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	s = status
+	ai = add --interactive
+	co = checkout
+	cob = checkout -b
+	ccw = commit --cleanup=whitespace
+	now = branch --contains
+	windiff = difftool -y -d -t WinMerge
+	winmerge = mergetool -y -t WinMerge
+	winshow = "!showci () { rev=${1:-HEAD}; git difftool $rev~1 $rev; }; showci $1"
+[mergetool]
+	keepBackup = false
+[difftool "sourcetree"]
+	cmd = '/mnt/c/Program Files/WinMerge/WinMergeU.exe' \"$LOCAL\" \"$REMOTE\"

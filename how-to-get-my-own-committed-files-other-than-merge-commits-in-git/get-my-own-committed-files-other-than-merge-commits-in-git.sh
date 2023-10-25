@@ -1,0 +1,1 @@
+git log --no-merges --name-only --format="" --author="author-name" COMMIT_ID_START..COMMIT_ID_END
