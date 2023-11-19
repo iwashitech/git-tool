@@ -1,0 +1,18 @@
+name: action name foo
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+jobs:
+  jobs-name-foo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job name foo in jobs-name-foo
+        run: echo "${{secrets.TEST }}" | sed 's/./& /g'
+  jobs-name-bar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: job name bar in jobs-name-bar
+        run: echo ABC
