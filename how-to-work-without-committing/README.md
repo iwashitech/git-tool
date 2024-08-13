@@ -1,4 +1,4 @@
-# コミットせずに作業を進める方法
+# コミットせずに追加、修正したファイルを抽出する方法
 
 ## statusを使う方法
 
@@ -28,7 +28,7 @@ unzip working.zip -d work
 
 ```sh
 git stash -u
-git show 'stash@{0}^3' --binary > patch
+git stash show 'stash@{0}' -p --binary > patch
 git apply patch
 ```
 
